@@ -1,18 +1,10 @@
 'use strict';
 
-var storeLocation = [
-  'FirstAndPike',
-  'SeaTacAirport',
-  'SeattleCenter',
-  'CapitolHill',
-  'Alki'
-];
-
-var storeAverage = {
-  "FirstAndPike": ['23', '65', '6.5'],
-  "SeaTacAirport": ['23', '65', '6.5'],
-  "SeattleCenter": ['23', '65', '6.5'],
-  "CapitolHill": ['23', '65', '6.5'],
+var storeList = {
+  "1st and Pike": ['23', '65', '6.5'],
+  "SeaTac Airport": ['23', '65', '6.5'],
+  "Seattle Center": ['23', '65', '6.5'],
+  "Capitol Hill": ['23', '65', '6.5'],
   "Alki": ['23', '65', '6.5']
 };
 
@@ -33,42 +25,44 @@ var storeHours = [
   '8pm',
 ];
 
-var data = [
-  ['23', '65', '6.5'],
-  ['3', '24',	'1.2'],
-  ['11', '38', '3.7'],
-  ['20','38',	'2.3'],
-  ['2', '16', '4.6']
-];
-
 document.body.onload = addStoreArry;
-
 var storeNames = document.getElementById('storeNames');
 
-function addStoreArry () {  // auto generate store names
-  for(var i=0; i < storeLocation.length; i++){
+function addStoreArry () {  // auto generate store names from list
+  for(var i=0; i < Object.keys(storeList).length; i++){
+    var dayTotal = [];
     var newDiv = document.createElement("div");
     newDiv.className = 'storeNames';
-    var newContent = document.createTextNode(storeLocation[i]); 
+    var newContent = document.createTextNode(Object.keys(storeList)[i]);
     newDiv.appendChild(newContent);  
     var currentDiv = document.getElementById("storeNames");
     document.body.insertBefore(newDiv, currentDiv);
 
-      for(var j=0; j < storeHours.length; j++){ // nested loop to add times per auto generated store names
-        var liEl = document.createElement('li');
-        // let values = Object.values(storeAverage)
-        console.log('data1: ' + data[i][0]);
-        console.log('data2: ' + data[i][1]);
-        var getRandomInt = function(){
-          let min = Math.ceil(data[i][0]);
-          let max = Math.floor(data[i][1]);
-          return Math.floor((Math.random() * (max - min + 1)) + min * data[i][2]);
+      for(var j=0; j < storeHours.length; j++){ // nested loop to auto generate each hour per store for set hours
+        var liEl = document.createElement('li'); 
+        var getRandomInt = function(){  // get min and max cutomer and avg cookie sale per customer
+          let min = Math.ceil(Object.values(storeList)[i][0]);
+          let max = Math.floor(Object.values(storeList)[i][1]);
+          return Math.floor((Math.random() * (max - min + 1)) + min * Object.values(storeList)[i][2]);
         };
-
         liEl.className = 'perHourData';
-        liEl.textContent = storeHours[j] + ': ' + getRandomInt() + ' cookies';
-        // liEl.textContent = storeHours[j] + ' test';
-        newDiv.appendChild(liEl);
+        var cookiePerHourNumber = getRandomInt(); // get random customer intake within min max threshold
+        var cookiePerHourText = storeHours[j] + ': ' + getRandomInt() + ' cookies';
+        // liEl.textContent = storeHours[j] + ': ' + getRandomInt() + ' cookies';
+        liEl.textContent = cookiePerHourText;
+        newDiv.appendChild(liEl); // add total sold per hour per store
+        dayTotal.push(cookiePerHourNumber); 
+        
       };
+      // add total cookies sold per day per store
+      var dayTotalText = dayTotal.reduce(function(pv, cv) { return pv + cv; }, 0);
+      console.log(dayTotal);
+      var totalDiv = document.createElement("div");
+      newDiv.className = 'storeNames';
+      var totalContent = document.createTextNode('Total: ' + dayTotalText + ' cookies'); 
+      newDiv.appendChild(totalContent);  
+      var currentTotalDiv = document.getElementById("total");
+      document.body.insertBefore(totalDiv, currentTotalDiv);
   };
 };
+
