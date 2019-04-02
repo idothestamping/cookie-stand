@@ -23,6 +23,12 @@ body {
 .nav-wrapper {
 	background-color: #ff8282;
 }
+#myGif {
+  width: auto ;
+  max-width: 100% ;
+  height: auto ;
+}
+/* mobile friendly */
 .sidenav-transition .sidenav-backdrop.mat-sidenav-shown {
   background: #282828 !important;  
 }
@@ -35,9 +41,4 @@ body {
 	div.mobilefriendlytext {
 		font-size: 15px;
 	}
-}
-#myGif {
-  width: auto ;
-  max-width: 100% ;
-  height: auto ;
 }
