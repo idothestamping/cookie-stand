@@ -1,4 +1,43 @@
+body {
+  background-color: #fff9f9;
+}
 .storeNames {
   padding: 10px;
   display: inline-block;
+}
+.container {
+  font-family: 'Raleway', sans-serif;
+}
+#mainTitle {
+  font-size: 150%;
+  font-weight: 500;
+}
+#storeNames {
+  margin: 20px 0;
+}
+.navbar {
+	min-height: 50px;
+	margin-bottom: 50px;
+	padding-bottom: 20px;
+}
+.nav-wrapper {
+	background-color: #ff8282;
+}
+.sidenav-transition .sidenav-backdrop.mat-sidenav-shown {
+  background: #282828 !important;  
+}
+@media screen and (min-width: 601px) {
+	div.mobilefriendlytext {
+    font-size: 30px;
+	}
+}
+@media screen and (max-width: 600px) {
+	div.mobilefriendlytext {
+		font-size: 15px;
+	}
+}
+#myGif {
+  width: auto ;
+  max-width: 100% ;
+  height: auto ;
 }
