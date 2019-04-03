@@ -1,4 +1,3 @@
-// This version is to use a single object of store names and data:
 'use strict';
 // materialize side menu on mobile
 $(document).ready(function(){
@@ -7,10 +6,10 @@ $(document).ready(function(){
 
 var storeList = {
   "1st and Pike": ['23', '65', '6.5'],
-  "SeaTac Airport": ['23', '65', '6.5'],
-  "Seattle Center": ['23', '65', '6.5'],
-  "Capitol Hill": ['23', '65', '6.5'],
-  "Alki": ['23', '65', '6.5']
+  "SeaTac Airport": ['3', '24', '1.2'],
+  "Seattle Center": ['11', '38', '3.7'],
+  "Capitol Hill": ['20', '38', '2.3'],
+  "Alki": ['2', '16', '4.6']
 };
 
 var hours = [
@@ -30,17 +29,15 @@ var hours = [
   '8pm',
 ];
 
-document.body.onload = addStoreArry;
 var storeNames = document.getElementById('storeNames');
 
-function addStoreArry() {  // auto generate store names from list into sepcific div and auto add class
+function addStoreArry(){  // auto generate store names from list into sepcific div and auto add class
   for(var i=0; i < Object.keys(storeList).length; i++){
-    var dayTotal = [];
+    var cookiePerHourArr = [];
     var newDiv = document.createElement("div");
     newDiv.className = 'storeNames';
     var newContent = document.createTextNode(Object.keys(storeList)[i]);
     newDiv.appendChild(newContent);  
-    var currentDiv = document.getElementById("storeNames");
     var parent  = document.getElementById('test');
     parent.appendChild(newDiv, parent);
 
@@ -52,20 +49,20 @@ function addStoreArry() {  // auto generate store names from list into sepcific 
           return Math.floor((Math.random() * (max - min + 1)) + min * Object.values(storeList)[i][2]);
         };
         liEl.className = 'perHourData';
-        var cookiePerHourNumber = getRandomInt(); // get random customer intake within min max threshold
+        var cookiePerHour = getRandomInt(); // get random customer intake within min max threshold
         var cookiePerHourText = hours[j] + ': ' + getRandomInt() + ' cookies';
         liEl.textContent = cookiePerHourText;
         newDiv.appendChild(liEl); // add total sold per hour per store
-        dayTotal.push(cookiePerHourNumber); 
+        cookiePerHourArr.push(cookiePerHour); 
         
       };
       // add total cookies sold per day per store
-      var dayTotalText = dayTotal.reduce(function(pv, cv) { return pv + cv; }, 0);
-      console.log(dayTotal);
+      var totalCookieArr = cookiePerHourArr.reduce(function(pv, cv) { return pv + cv; }, 0);
+      console.log(cookiePerHourArr);
       newDiv.className = 'storeNames';
-      var totalContent = document.createTextNode('Total Cookies: ' + dayTotalText); 
+      var totalContent = document.createTextNode('Total Cookies: ' + totalCookieArr); 
       newDiv.appendChild(totalContent);  
       parent.appendChild(newDiv, parent);
   };
 };
-
+addStoreArry();
