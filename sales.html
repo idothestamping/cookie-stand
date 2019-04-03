@@ -70,6 +70,34 @@
             <div id="mainTitle" class="mobilefriendlytext">Doug's Salmon Cookies
             </div>
             <hr>
+            <fieldset>
+                <legend class="legend">Store Locations</legend>
+
+            <form id="store-form">
+                <div class="row">
+                    <div class="input-field col s3">
+                  <label for="name">Location: </label>
+                  <input name="name" type="text" size="15" placeholder="i.e., Seattle" required />
+                </div>
+                  <div class="input-field col s3">
+                  <label for="min">Customer(s) Info: </label>
+                  <input name="min" type="text" size="50" placeholder="Minimum number" required/>
+                </div>
+                  <div class="input-field col s3">
+                  <label for="max">Customer(s) Info: </label>
+                  <input name="max" type="text" size="50" placeholder="Maximum number" required/>
+                </div>
+                  <div class="input-field col s3">
+                  <label for="avg">Customer(s) Info: </label>
+                  <input name="avg" type="text" size="50" placeholder="Average perchase" required/>
+                  </div>
+                </div>
+
+                  <button class="waves-effect waves-light btn" type="submit">Submit</button>
+                </fieldset>
+              </form>
+            
+              <!-- <button id="clear-chat-list">undecided button</button> -->
               <div class="row center"  id="test"">
               <div id="myDynamicTable"></div>
           </div>

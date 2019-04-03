@@ -23,6 +23,7 @@ var hours = [
 
 // Lab-07 requirement: Table using contructors
 var allStores = [];
+var storeForm = document.getElementById('store-form');
 
 function Store(name, min, max, avg) {
   this.name = name;
@@ -60,7 +61,7 @@ Store.prototype.cookiesBought = function(){
 };
 
 Store.prototype.totalCookies = function(){
-  var total = 0;
+  // var total = 0;
   for(var i = 0; i < hours.length; i++){
     this.cookiesPerDay = this.cookiesPerHour.reduce(function(pv, cv) { return pv + cv; }, 0);
   }
@@ -105,12 +106,16 @@ function makeHeaderRow() {
     // Header text for Daily Total column.
     if (i === hours.length - 1){ 
       thEl = document.createElement('th');
-      thEl.textContent = 'Daily Location Total';
+      thEl.textContent = 'Total';
       trEl.appendChild(thEl);
       storeTable.appendChild(trEl);
     };
   };
+
 };
+function renderAllComments() {
+  allStores.innerHTML = '';
+}
 
 function renderallStores() {
   for (var i = 0; i < allStores.length; i++) {
@@ -120,3 +125,26 @@ function renderallStores() {
 
 makeHeaderRow();
 renderallStores();
+
+// Add event listener and handle submit
+storeForm.addEventListener('submit', handleSubmit);
+
+function handleSubmit(event){
+  //prevents page reload on a 'submit' event
+  event.preventDefault();
+  console.log(newStore);
+  var newStore = event.target.name.value;
+  var newMin = event.target.min.value;
+  var newMax = event.target.max.value;
+  var newAvg = event.target.avg.value;
+  var addStore = new Store(newStore, newMin, newMax, newAvg);
+
+  // This empties the form fields after the data has been grabbed
+  event.target.name.value = null;
+  event.target.min.value = null;
+  event.target.max.value = null;
+  event.target.avg.value = null;
+
+  addStore.render();
+};
+
