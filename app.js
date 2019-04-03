@@ -130,21 +130,25 @@ renderallStores();
 storeForm.addEventListener('submit', handleSubmit);
 
 function handleSubmit(event){
-  //prevents page reload on a 'submit' event
-  event.preventDefault();
-  console.log(newStore);
   var newStore = event.target.name.value;
   var newMin = event.target.min.value;
   var newMax = event.target.max.value;
   var newAvg = event.target.avg.value;
   var addStore = new Store(newStore, newMin, newMax, newAvg);
-
-  // This empties the form fields after the data has been grabbed
-  event.target.name.value = null;
-  event.target.min.value = null;
-  event.target.max.value = null;
-  event.target.avg.value = null;
-
-  addStore.render();
+  //prevents page reload on a 'submit' event
+  event.preventDefault();
+  if (newMin < newMax) {
+    console.log(newStore);
+    // This empties the form fields after the data has been grabbed
+    event.target.name.value = null;
+    event.target.min.value = null;
+    event.target.max.value = null;
+    event.target.avg.value = null;
+  
+    addStore.render();
+  }
+  else {
+    alert('mininum customer value cannot be greater than max value.');
+  }
 };
 
