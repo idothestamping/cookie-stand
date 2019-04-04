@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Doug Klemp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  
+</head>
+
+<header>
+    <!-- Navbar -->
+    <div class="navbar">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="" class="brand-logo"><img id="navIcon" src="fish.png" alt="Smiley face" width="60" style="margin-left: 10px;" /></a>
+
+          <a href="" data-target="mobile-demo" class="sidenav-trigger">
+            <i class="material-icons">menu</i></a>
+          <ul id="menu1" class="right hide-on-med-and-down">
+          <li>
+            <a class="menu2" href="#contact">
+              <i class="material-icons">person</i></a>
+          </li>
+          <li>
+            <a class="menu2" href="">
+              <i class="material-icons">shopping_cart</i></a> 
+          </li>
+          <li>
+            <a class="menu2" href="">
+            <i class="material-icons">settings</i></a>
+          </li>
+          </ul>
+        </div>
+      </nav>
+  </div>
+    <!-- Mobile Nav -->
+  <ul class="sidenav" id="mobile-demo"> 
+    <li>
+      <a class="menu2" href="#contact">
+        <i class="material-icons">person</i></a>
+    </li>
+    <li>
+      <a class="menu2" href="">
+      <i class="material-icons">shopping_cart</i></a>
+    </li>
+    <li>
+      <a class="menu2" href="">
+      <i class="material-icons">settings</i></a>
+    </li>
+  </ul>
+</header>
+
+<body>
+  <div class="container">
+      <div class="row center">
+        <div class="col s12">
+          <img id="myGif" class="responsive" src="salmon.png" alt="Smiley face">
+        </div>
+          <div class="row center">
+          <div class="col s12">
+            <hr>
+            <div id="mainTitle" class="mobilefriendlytext">Doug's Salmon Cookies
+            </div>
+            <hr>
+            <fieldset>
+                <legend class="legend">Store Locations</legend>
+
+            <form id="store-form">
+                <div class="row">
+                    <div class="input-field col s3">
+                  <label for="newStore">Location: </label>
+                  <input name="name" type="text" size="15" placeholder="i.e., Seattle" required />
+                </div>
+                  <div class="input-field col s3">
+                  <label for="min">Customer(s) Info: </label>
+                  <input name="min" type="number" min="0" size="50" placeholder="Minimum number" required/>
+                </div>
+                  <div class="input-field col s3">
+                  <label for="max">Customer(s) Info: </label>
+                  <input name="max" type="number" min="0" size="50" placeholder="Maximum number" required/>
+                </div>
+                  <div class="input-field col s3">
+                  <label for="avg">Customer(s) Info: </label>
+                  <input name="avg" type="text" min="0" ize="50" placeholder="Average perchase" required/>
+                  </div>
+                </div>
+
+                  <button class="waves-effect waves-light btn" type="submit">Submit</button>
+
+                </fieldset>
+              </form>
+            
+              <!-- <button id="clear-chat-list">undecided button</button> -->
+              <div class="row center"  id="test"">
+              <div id="myDynamicTable"></div>
+          </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <footer id="contact" class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Become the Cookie Monster</h5>
+            <ul>
+                <li>
+            <a class="grey-text text-lighten-4" href="https://github.com/idothestamping/cookie-stand">Git Repo</a>
+            </li>
+            <li>
+            <a class="grey-text text-lighten-4" href="#!">douglas.klemp@gmail.com<a>
+            </li>
+          </div>
+        <div class="col l6 s12">
+          <h5 class="white-text">Doug Klemp</h5>
+          <ul>
+            <li>
+              <a class="grey-text text-lighten-3" href="#!">Web Developer | SDE | Artist</a>
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="#!">Father to 2 boys: 7yr & 8mo </a>
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="#!">Pro Handyman | Optician</a>
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="#!">Veteran</a>
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="#!">Crytpo Enthusiast | Miner<a>
+            </li>
+          </ul>
+        </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2019 Let's Git it!!! Student at Code Fellows
+        </div>
+      </div>
+    </footer>
+  <script src="app.js" async defer></script>
+</body>
+</html>
