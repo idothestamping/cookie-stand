@@ -105,7 +105,37 @@ function makeHeaderRow() {
       storeTable.appendChild(trEl);
     }
   }
+}
 
+function makeFooterRow() {
+  var cookiesPerHour = [];
+  for (var i = 0; i < hours.length; i ++){
+    var cookiesPerHourTotal = 0;
+    for (var j =0; j < allStores.length; j++){
+      cookiesPerHourTotal += allStores[j].cookiesPerHour[i];
+    }
+    cookiesPerHour.push(cookiesPerHourTotal);
+  }
+  var footer = document.getElementById('myDynamicTable');
+  var trEl = document.createElement('tr');
+  trEl.id = 'footerRow';
+  var tdEl = document.createElement('td');
+  tdEl.textContent = 'Total';
+  trEl.appendChild(tdEl);
+  for (i = 0; i < hours.length; i++){
+    tdEl = document.createElement('td');
+    tdEl.textContent = cookiesPerHour[i];
+    trEl.appendChild(tdEl);
+  }
+  console.log(cookiesPerHourTotal);
+  var grandTotal = 0;
+  for (i = 0; i < hours.length; i++){
+    grandTotal += cookiesPerHour[i];
+  }
+  tdEl = document.createElement('td');
+  tdEl.textContent = grandTotal;
+  trEl.appendChild(tdEl);
+  footer.appendChild(trEl).classList.add('total');
 }
 
 function renderallStores() {
@@ -113,9 +143,6 @@ function renderallStores() {
     allStores[i].render();
   }
 }
-
-makeHeaderRow();
-renderallStores();
 
 // Add event listener and handle submit
 storeForm.addEventListener('submit', handleSubmit);
@@ -140,4 +167,12 @@ function handleSubmit(event){
   else {
     alert('mininum customer value cannot be greater than max value.');
   }
+  var footerRow = document.getElementById('footerRow');
+  if (footerRow){
+    footerRow.remove();
+    makeFooterRow();
+  }
 }
+makeHeaderRow();
+renderallStores();
+makeFooterRow();
