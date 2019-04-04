@@ -45,13 +45,9 @@ new Store('Alki', '2', '16', '4.6');
 console.table(allStores);
 
 Store.prototype.randomCustomers = function(){
-  for(var i = 0; i < hours.length; i++){ 
-    // Save for reference:
-    // let min = Math.ceil(Object.values(allStores[0])[1]);
-    // let max = Math.floor(Object.values(allStores[0])[2]);
-    // let avg = Object.values(allStores[0])[3]);
+  for(var i = 0; i < hours.length; i++){
     this.customers.push(Math.floor((Math.random() * (this.max - this.min + 1)) + this.min));
-  };
+  }
 };
 
 Store.prototype.cookiesBought = function(){
@@ -78,15 +74,14 @@ Store.prototype.render = function(){
   var tdEl = document.createElement('td');
   tdEl.textContent = this.name;
   trEl.appendChild(tdEl);
-    for (var i = 0; i < hours.length; i++){
-      tdEl = document.createElement('td');
-      tdEl.textContent = this.cookiesPerHour[i];
-      trEl.appendChild(tdEl);
-    };
-  var tdEl = document.createElement('td');
+  for (var i = 0; i < hours.length; i++){
+    tdEl = document.createElement('td');
+    tdEl.textContent = this.cookiesPerHour[i];
+    trEl.appendChild(tdEl);
+  }
+  tdEl = document.createElement('td');
   tdEl.textContent = this.cookiesPerDay;
-  trEl.appendChild(tdEl).classList.add('total');;
-  
+  trEl.appendChild(tdEl).classList.add('total');
 
   storeTable.appendChild(trEl);
 };
@@ -98,30 +93,26 @@ function makeHeaderRow() {
   var thEl = document.createElement('th');
   thEl.textContent = '';
   trEl.appendChild(thEl);
- 
   for (var i = 0; i < hours.length; i++) {
-    var thEl = document.createElement('th');
-    thEl.textContent = hours[i]; 
+    thEl = document.createElement('th');
+    thEl.textContent = hours[i];
     trEl.appendChild(thEl);
     // Header text for Daily Total column.
-    if (i === hours.length - 1){ 
+    if (i === hours.length - 1){
       thEl = document.createElement('th');
       thEl.textContent = 'Total';
       trEl.appendChild(thEl);
       storeTable.appendChild(trEl);
-    };
-  };
+    }
+  }
 
-};
-function renderAllComments() {
-  allStores.innerHTML = '';
 }
 
 function renderallStores() {
   for (var i = 0; i < allStores.length; i++) {
     allStores[i].render();
-  };
-};
+  }
+}
 
 makeHeaderRow();
 renderallStores();
@@ -131,8 +122,8 @@ storeForm.addEventListener('submit', handleSubmit);
 
 function handleSubmit(event){
   var newStore = event.target.name.value;
-  var newMin = event.target.min.value;
-  var newMax = event.target.max.value;
+  var newMin = Number(event.target.min.value);
+  var newMax = Number(event.target.max.value);
   var newAvg = event.target.avg.value;
   var addStore = new Store(newStore, newMin, newMax, newAvg);
   //prevents page reload on a 'submit' event
@@ -144,11 +135,9 @@ function handleSubmit(event){
     event.target.min.value = null;
     event.target.max.value = null;
     event.target.avg.value = null;
-  
     addStore.render();
   }
   else {
     alert('mininum customer value cannot be greater than max value.');
   }
-};
-
+}
