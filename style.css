@@ -111,9 +111,35 @@ table, th, td {
 .input-field .prefix.active {
   color: #000;
 }
+
 .grandTotal {
   font-weight: 800;
 }
-button {
+
+button .btn{
   background-color: #ff8282 !important;
+}
+
+.carousel {
+	/* margin-top: 40px; */
+	border-radius: 5px;
+}
+
+.carousel-item {
+	width: 100%;
+	height: 100%;
+}
+
+.carousel-fixed-item h1 {
+	font-family: 'EB Garamond', serif;
+	text-shadow: 3px 3px 4px #323232;
+	color: white;
+}
+
+.carousel-fixed-item p {
+	background-color: rgba(0,0,0,0.4);
+}
+
+#searchbaronmain {
+	margin: 0;
 }

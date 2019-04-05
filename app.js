@@ -2,6 +2,10 @@
 // materialize side menu on mobile
 $(document).ready(function(){
   $('.sidenav').sidenav();
+  $('.carousel').carousel({fullWidth: true});
+  setInterval(function() {
+      $('.carousel').carousel('next');
+  }, 3000);
 });
 
 var hours = [
