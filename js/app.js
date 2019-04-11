@@ -4,7 +4,7 @@ $(document).ready(function(){
   $('.sidenav').sidenav();
   $('.carousel').carousel({fullWidth: true});
   setInterval(function() {
-      $('.carousel').carousel('next');
+    $('.carousel').carousel('next');
   }, 3000);
 });
 
